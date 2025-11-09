@@ -8,6 +8,9 @@ import networkx as nx
 import nltk
 import os
 from tempfile import NamedTemporaryFile
+from pydub import AudioSegment
+import shutil
+
 
 # Setup NLTK
 nltk.download("punkt")
@@ -23,25 +26,32 @@ if uploaded_file is not None:
     with NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
         tmp.write(uploaded_file.read())
         tmp_path = tmp.name
-    output_wav = "audio_clean.wav"
+        output_wav = "audio_clean.wav"
+
+if shutil.which("ffmpeg") is not None:
     ffmpeg.input(tmp_path).output(output_wav, ac=1, ar=16000).run(overwrite_output=True)
+else:
+    audio = AudioSegment.from_file(tmp_path)
+    audio = audio.set_frame_rate(16000).set_channels(1)
+    audio.export(output_wav, format="wav")
+
 
     # Select model
     model_size = st.selectbox("Choose Whisper model size:", ["tiny", "base", "small", "medium", "large"], index=2)
 
     # Transcribe 
-    if st.button("🚀 Transcribe and Summarize"):
+    if st.button("Transcribe and Summarize"):
         with st.spinner("Transcribing audio using Whisper... ⏳"):
             model = whisper.load_model(model_size)
             result = model.transcribe(output_wav, fp16=False, language="en")
             text = result["text"]
 
-        st.subheader("📝 Transcribed Text:")
+        st.subheader("Transcribed Text:")
         st.write(text)
 
         # TextRank Summarization
         st.markdown("---")
-        st.subheader("🧠 Summarized Text (TextRank + BERT Embedding)")
+        st.subheader("Summarized Text")
 
         def textrank_with_embeddings(text, n_sentences=8):
             sentences = nltk.sent_tokenize(text)
@@ -58,13 +68,14 @@ if uploaded_file is not None:
         with st.spinner("Summarizing text... 🤖"):
             summary = textrank_with_embeddings(text, n_sentences=8)
 
-        st.success("✅ Summary generated successfully!")
+        st.success("Summary generated successfully!")
         st.write(summary)
 
         # Download Button
-        st.download_button("💾 Download Summary", summary, file_name="summary.txt")
+        st.download_button("Download Summary", summary, file_name="summary.txt")
 
         # Cleanup
         os.remove(tmp_path)
 else:
     st.info("⬆️ Please upload an audio file to start.")
+
