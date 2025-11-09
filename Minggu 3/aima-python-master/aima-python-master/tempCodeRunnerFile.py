@@ -1,1 +1,0 @@
-Gagal(Andi, Mathematics)
