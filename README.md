@@ -1,13 +1,12 @@
-# 🎙️ Audio Summarizer with Text Rank
+# Audio Summarizer with Text Rank
 
-Merupakan app web sederhana dengan Streamlit untuk membuat summary dari video/audio 
+App web sederhana dengan Streamlit untuk membuat summary dari video/audio 
 
 Aplikasi ini melakukan dua hal utama:
 1.  **Transkrip:** Menggunakan model **Whisper** dari OpenAI untuk mengubah audio yang diunggah menjadi teks.
 2.  **Peringkasan:** Menggunakan algoritma **TextRank** yakni *sentence embeddings* (`all-MiniLM-L6-v2`) untuk mengekstrak kalimat-kalimat paling penting dari transkrip tersebut.
 
-## 🚀 Cara Menjalankan (Lokal)
-
+## Cara Menjalankan
 1.  **Clone Repositori**
     ```bash
     git clone [URL-REPO]
@@ -43,7 +42,7 @@ Aplikasi ini melakukan dua hal utama:
     ```
     Buka `http://localhost:8501` di browser.
 
-## ☁️ Cara Deploy ke Streamlit 
+## Cara Deploy ke Streamlit 
 
 1.  Fork repository ini ke akun GitHub.
 2.  Di dashboard Streamlit, klik "New app".
@@ -52,7 +51,7 @@ Aplikasi ini melakukan dua hal utama:
 5.  Streamlit akan otomatis mendeteksi `requirements.txt` dan `packages.txt`. File `packages.txt` sangat penting untuk menginstal `ffmpeg` di *container*.
 6.  Klik "Deploy".
 
-## 🛠️ Fitur Aplikasi
+## Fitur Aplikasi
 
 1.  **Unggah File:** mengunggah file audio/video (mp4,mp3, wav, m4a, dll.).
 2.  **Konversi Audio:** File tersebut dikonversi menggunakan `ffmpeg` menjadi format WAV mono 16kHz.
@@ -65,7 +64,7 @@ Aplikasi ini melakukan dua hal utama:
     * Algoritma PageRank (`nx.pagerank`) dijalankan pada grafik ini untuk "memperingkat" kalimat yang paling representatif/penting.
 5.  **Tampilan:** Aplikasi menampilkan transkrip lengkap dan ringkasan.
 
-## 📦 Dependency yang dipakai
+## Dependency yang dipakai
 
 * **UI:** `streamlit`
 * **Transkripsi:** `openai-whisper`, `torch`
