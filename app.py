@@ -31,7 +31,11 @@ if uploaded_file is not None:
 
 
     # Select model
-    model_size = st.selectbox("Choose Whisper model size:", ["tiny", "base", "small", "medium", "large"], index=2)
+    model_size = st.selectbox(
+    "Choose Whisper model size:",
+    ["tiny", "base", "small"],
+    index=2
+)
 
     # Transcribe 
 if st.button("Transcribe and Summarize"):
@@ -72,6 +76,7 @@ if st.button("Transcribe and Summarize"):
         os.remove(tmp_path)
 else:
     st.info("⬆️ Please upload an audio file to start.")
+
 
 
 
