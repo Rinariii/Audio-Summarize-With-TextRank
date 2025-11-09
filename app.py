@@ -12,7 +12,7 @@ import shutil
 
 
 # Setup NLTK
-nltk.download("punkt")
+nltk.download("punkt_tab")
 
 # Streamlit UI
 st.set_page_config(page_title="🎧 Audio Summarizer (Whisper + BERT)", layout="wide")
@@ -72,6 +72,7 @@ if st.button("Transcribe and Summarize"):
         os.remove(tmp_path)
 else:
     st.info("⬆️ Please upload an audio file to start.")
+
 
 
 
