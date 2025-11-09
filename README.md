@@ -65,6 +65,6 @@ App web sederhana dengan Streamlit untuk membuat summary dari video/audio
 ## Dependency yang dipakai
 
 * **UI:** `streamlit`
-* **Transkripsi:** `openai-whisper`, `torch`
-* **Pemrosesan Audio:** `ffmpeg-python`, `pydub` (dan `ffmpeg` di level sistem)
-* **Peringkasan:** `sentence-transformers`, `scikit-learn`, `networkx`, `nltk`, `numpy`
+* **Transkrip:** `openai-whisper`, `torch`
+* **Audio:** `ffmpeg-python`
+* **Summary:** `sentence-transformers`, `scikit-learn`, `networkx`, `nltk`, `numpy`
