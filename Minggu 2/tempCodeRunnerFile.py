@@ -1,1 +1,0 @@
-# --- LOGIKA UTAMA ---
