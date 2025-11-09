@@ -28,12 +28,7 @@ if uploaded_file is not None:
         tmp_path = tmp.name
         output_wav = "audio_clean.wav"
 
-if shutil.which("ffmpeg") is not None:
     ffmpeg.input(tmp_path).output(output_wav, ac=1, ar=16000).run(overwrite_output=True)
-else:
-    audio = AudioSegment.from_file(tmp_path)
-    audio = audio.set_frame_rate(16000).set_channels(1)
-    audio.export(output_wav, format="wav")
 
 
     # Select model
@@ -78,5 +73,6 @@ if st.button("Transcribe and Summarize"):
         os.remove(tmp_path)
 else:
     st.info("⬆️ Please upload an audio file to start.")
+
 
 
