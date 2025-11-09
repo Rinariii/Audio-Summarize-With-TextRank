@@ -40,7 +40,7 @@ else:
     model_size = st.selectbox("Choose Whisper model size:", ["tiny", "base", "small", "medium", "large"], index=2)
 
     # Transcribe 
-    if st.button("Transcribe and Summarize"):
+if st.button("Transcribe and Summarize"):
         with st.spinner("Transcribing audio using Whisper... ⏳"):
             model = whisper.load_model(model_size)
             result = model.transcribe(output_wav, fp16=False, language="en")
@@ -78,4 +78,5 @@ else:
         os.remove(tmp_path)
 else:
     st.info("⬆️ Please upload an audio file to start.")
+
 
