@@ -1,8 +1,6 @@
 # Audio Summarizer with Text Rank
 
 App web sederhana dengan Streamlit untuk membuat summary dari video/audio 
-
-Aplikasi ini melakukan dua hal utama:
 1.  **Transkrip:** Menggunakan model **Whisper** dari OpenAI untuk mengubah audio yang diunggah menjadi teks.
 2.  **Peringkasan:** Menggunakan algoritma **TextRank** yakni *sentence embeddings* (`all-MiniLM-L6-v2`) untuk mengekstrak kalimat-kalimat paling penting dari transkrip tersebut.
 
