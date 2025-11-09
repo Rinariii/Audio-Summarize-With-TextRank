@@ -8,7 +8,6 @@ import networkx as nx
 import nltk
 import os
 from tempfile import NamedTemporaryFile
-from pydub import AudioSegment
 import shutil
 
 
@@ -73,6 +72,7 @@ if st.button("Transcribe and Summarize"):
         os.remove(tmp_path)
 else:
     st.info("⬆️ Please upload an audio file to start.")
+
 
 
 
