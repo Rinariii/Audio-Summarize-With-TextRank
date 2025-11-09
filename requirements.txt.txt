@@ -1,0 +1,9 @@
+streamlit
+openai-whisper
+ffmpeg-python
+sentence-transformers
+scikit-learn
+networkx
+nltk
+numpy
+torch
