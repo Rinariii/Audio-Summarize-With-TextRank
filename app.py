@@ -19,7 +19,7 @@ st.set_page_config(page_title="🎧 Audio Summarizer (Whisper + BERT)", layout="
 st.title("🎙️ Audio → Text → Summary")
 st.markdown("This app transcribes an audio file using **Whisper** and summarizes it with **BERT-based TextRank**.")
 
-uploaded_file = st.file_uploader("📁 Upload your audio file (mp3, wav, m4a, webm, etc):", type=["mp3", "wav", "m4a", "webm"])
+uploaded_file = st.file_uploader("📁 Upload your audio file (mp4,mp3, etc):", type=["mp4,"mp3", "wav", "m4a", "webm"])
 
 if uploaded_file is not None:
     with NamedTemporaryFile(delete=False, suffix=".mp3") as tmp:
@@ -76,6 +76,7 @@ if st.button("Transcribe and Summarize"):
         os.remove(tmp_path)
 else:
     st.info("⬆️ Please upload an audio file to start.")
+
 
 
 
